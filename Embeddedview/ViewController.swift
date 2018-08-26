@@ -2,17 +2,33 @@
 //  ViewController.swift
 //  Embeddedview
 //
-//  Created by Steven Lipton on 8/25/18.
-//  Copyright © 2018 Steven Lipton. All rights reserved.
+//
+//  A exercise file for iOS Development Tips Weekly
+//  by Steven Lipton (C)2018, All rights reserved
+//  For videos go to http://bit.ly/TipsLinkedInLearning
+//  For code go to http://bit.ly/AppPieGithub
 //
 
 import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    
+    @IBOutlet weak var itemDetailLabel: UILabel!
+    var orderedItems = ItemsOrdered()
+    var itemTotal:Double{
+        var total = 0.00
+        for row in orderedItems.orderRows{
+            total += row.price
+        }
+        return total
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        totalLabel.text = String(format:"Total for order: %5.2f  ",itemTotal)
     }
 
 
